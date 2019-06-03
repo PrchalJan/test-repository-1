@@ -1,0 +1,789 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap');
+
+
+
+//sass
+
+// Font-size
+$mobileHomeFontSize: 2.5rem;
+$mobileSectionsFontSize: 1.8rem;
+
+// Font formatting
+$mobileLineHeight: 150%;
+
+// Font Color
+$navMobileTextColor: #333;
+$navMobileLineColor: #666;
+
+$contentTextColor: #555;
+$mainBackgroundColor: #f4f4f4;
+
+
+// Mobile nav
+$navMobileWidth: 70vw;
+// Desktopnav
+$navDesktopWidth: 30rem;
+
+
+// Mobile header
+$headerMobileHeight: 6.1rem;
+$headerMobileLogoHeight: 4.1rem;
+$headerMobileSideMargins: 2.5rem;
+$headerMobileTopAndBottomMargins: 1rem;
+$headerMobileMenuIconHeight: 3rem;
+$headerMobileMenuIconTopAndBottomMargins: calc((#{$headerMobileHeight} - #{$headerMobileMenuIconHeight}) / 2);
+// Desktop Header
+$headerDesktopLogoHeight: 11rem;
+$headerDesktopLogoSideMargins: calc((#{$navDesktopWidth} - #{$headerDesktopLogoHeight}) / 2);
+
+
+
+
+// Content 
+$sectionMobileContentTopBottomPadding: 5rem;
+$sectionDesktopImageStrip: 32rem;
+$sectionMobileImageStrip: 23rem;
+$sectionMobileSmallImageStrip: 17rem;
+
+// section images
+$sectionImagesDesktopHeadingHeight: 5rem;
+$sectionImagesMobileHeadingHeight: 4rem;
+$sectionImagesMobileSmallHeadingHeight: 3.5rem;
+$sectionImagesHeaderDesktopTopMargin: calc((#{$sectionDesktopImageStrip} - #{$sectionImagesDesktopHeadingHeight}) / 2);
+$sectionImagesHeaderMobileTopMargin: calc((#{$sectionMobileImageStrip} - #{$sectionImagesMobileHeadingHeight}) / 2);
+$sectionImagesHeaderMobileSmallTopMargin: calc((#{$sectionMobileSmallImageStrip} - #{$sectionImagesMobileSmallHeadingHeight}) / 2);
+
+// lightbox
+$lightbox: (
+  contentMargins: 5rem,
+);
+@function lightbox($property) {
+  @return map-get($lightbox, $property);
+}
+
+$colors: (
+  whiteText: #f4f4f4,
+);
+@function color($property) {
+  @return map-get($colors, $property);
+}
+
+
+
+
+
+
+@mixin mobileSmall {
+  @media(max-width: 499px) {@content};
+}
+@mixin mobile {
+  @media(max-width: 799px) {@content};
+}
+@mixin desktop {
+  @media(min-width: 800px) {@content};
+}
+@mixin desktopLarge {
+  @media(min-width: 1200px) {@content};
+}
+
+
+// animations
+@keyframes menuSlide {
+  from {
+    right: -85%;
+  }
+  to {
+    right: 0;
+  }
+}
+
+
+
+
+// Global
+* {
+  margin: 0;
+  padding: 0;
+  @include mobile {
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+  
+}
+
+html {
+  font-size: 10px;
+  @include desktop {
+    scroll-behavior: smooth;
+  }
+}
+body {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: $contentTextColor;
+  background-color: $mainBackgroundColor;
+}
+
+body,
+h1,
+h2,
+h3 {
+  font-weight: 300;
+}
+
+.hidden {
+  display: none;
+}
+.visible {
+  display: block;
+}
+.mobileHidden {
+  @include mobile {
+    display: none;
+  }
+}
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+img {
+  vertical-align: middle;
+}
+ul {
+  list-style-type: none;
+}
+
+// all sections
+header,
+nav,
+main {
+  display: block;
+}
+
+header,
+nav {
+  * {
+    user-select: none;
+  }
+}
+main {
+  position: absolute;
+  @include mobile {
+    top: $headerMobileHeight;
+    right: 0;
+    left: 0;
+  }
+  @include desktop {
+    top: 0;
+    right: 0;
+    left: $navDesktopWidth;
+  }
+}
+.content {
+  @include mobile {
+    padding: $sectionMobileContentTopBottomPadding 0;
+    line-height: $mobileLineHeight;
+  }
+  @include desktop {
+    padding: 5rem 0;
+  }
+}
+.container {
+  width: 85%;
+  max-width: 900px;
+  margin: 0 auto;
+  @include mobileSmall {
+    width: 90%;
+  }
+  @include desktop {
+    width: 80%;
+  }
+}
+div.photoStrip {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  @include mobile {
+    height: $sectionMobileImageStrip;
+  }
+  @include mobileSmall {
+    height: $sectionMobileSmallImageStrip;
+  }
+  @include desktop {
+    height: $sectionDesktopImageStrip;
+  }
+}
+
+html,
+body {
+  min-height: 100%;
+}
+main,
+section {
+  min-height: calc(100% - #{$headerMobileHeight});
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+
+
+// Header
+header {
+  background: #f2f2f2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  @include mobile {
+    // z-index: 1;
+    height: $headerMobileHeight;
+    right: 0;
+  }
+  @include desktop {
+    width: $navDesktopWidth;
+  }
+  div#logoWrapper {
+    // background: green;
+    position: absolute;
+    cursor: pointer;
+    @include mobile {
+      top: $headerMobileTopAndBottomMargins;
+      left: $headerMobileSideMargins;
+      height: $headerMobileLogoHeight;
+    }
+    @include desktop {
+      top: 5rem;
+      // left: $headerDesktopLogoSideMargins;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+    img {
+      @include mobile {
+        float: left;
+        height: $headerMobileLogoHeight;
+        width: $headerMobileLogoHeight;
+        margin-right: 1rem;
+      }
+      @include desktop {
+        height: $headerDesktopLogoHeight;
+        width: $headerDesktopLogoHeight;
+        cursor: pointer;
+      }
+    }
+    h1 {
+      // background: red;
+      text-transform: uppercase;
+      font-weight: 100;
+      @include mobile {
+        float: left;
+        height: $headerMobileLogoHeight;
+        line-height: $headerMobileLogoHeight;
+      }
+      @include desktop {
+        text-align: center;
+        margin-top: 1.5rem;
+        cursor: pointer;
+      }
+    }
+    p {
+      @include mobile {
+        display: none;
+      }
+      @include desktop {
+        margin-top: 1rem;
+      }
+    }
+  }
+  i.material-icons {
+    // background: blue;
+    @include mobile {
+      font-size: $headerMobileMenuIconHeight;
+      position: absolute;
+      top: $headerMobileMenuIconTopAndBottomMargins;
+      // top: calc((6.5rem - 3rem) / 2);
+      right: $headerMobileSideMargins;
+      cursor: pointer;
+    }
+    @include desktop {
+      display: none;
+    }
+  }
+}
+
+
+// temporary
+// nav:hover {
+//   @include mobile {
+//     right: -100%;
+//   }
+// }
+
+
+// Navigation
+nav {
+  
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  @include mobile {
+    z-index: 3;
+    width: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, .3);
+  }
+  @include desktop {
+    left: 0;
+    width: $navDesktopWidth;
+    background: #f2f2f2;
+    border-right: 1px solid #ccc;
+  }
+  .navWrapper {
+
+    @include desktop {
+      position: absolute;
+      top: 20rem;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  ul {
+    
+    position: absolute;
+    // background-color: yellow;
+    @include mobile {
+      background: #f4f4f4;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      width: $navMobileWidth;
+      max-width: 300px;
+      padding: 8rem 3rem;
+      animation-name: menuSlide;
+      animation-duration: .3s;
+    }
+    @include desktop {
+      background: #f2f2f2;
+      width: 100%;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      
+    }
+  }
+  li {
+    // background-color: red;
+    cursor: pointer;
+    font-size: 2rem;
+    
+    @include mobile {
+      color: $navMobileTextColor;
+    }
+    @include desktop {
+      font-weight: 300;
+      padding: .5rem 0;
+    }
+    span {
+      @include mobile {
+        margin-left: 1rem;
+      }
+    }
+  }
+  li + li {
+    @include mobile {
+      margin-top: 1.5rem;
+    }
+    @include desktop {
+      margin-top: .8rem;
+    }
+    
+  }
+  li:before,
+  li:last-of-type::after {
+    @include mobile {
+      content: '';
+      display: block;
+      height: 1px;
+      background-color: $navMobileLineColor;
+      margin: 1rem 0 1.5rem 0;
+    }
+  }
+  li:last-of-type::after {
+    @include mobile {
+      margin-top: 1.3rem;
+    }
+  }
+  i#close-menu {
+    font-size: $headerMobileMenuIconHeight;
+    position: absolute;
+    top: $headerMobileMenuIconTopAndBottomMargins;
+    right: $headerMobileSideMargins;
+    cursor: pointer;
+    @include desktop {
+      display: none;
+    }
+  }
+}
+
+
+// home section
+section#home {
+  div#homeImage {
+    background-image: url(images/other/home.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    @include mobile {
+      height: 50vh;
+    }
+    @include desktop {
+      position: relative;
+      height: 100vh;
+    }
+    a.expand {
+      
+      color: #f4f4f4;
+      width: 1.3em;
+      height: 1em;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      cursor: pointer;
+
+      @include mobile {
+        display: none;
+      }
+      @include desktop {
+        // background: blue;
+        font-size: 4rem;
+        position: absolute;
+        left: 50%;
+        bottom: 3rem;
+        // transform: translateX(-50%);
+        
+
+      }
+    }
+  }
+  div#homeContent {
+    p {
+      text-align: center;
+      @include mobile {
+        font-size: $mobileHomeFontSize;
+      }
+      @include desktop {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+
+// about section
+section#about {
+  div.photoStrip {
+    background-image: url(images/other/about.jpg);
+  }
+  div#aboutContent {
+    font-size: $mobileSectionsFontSize;
+    text-align: justify;
+  }
+}
+
+
+// photos section
+section#photos {
+  * {
+    user-select: none;
+  }
+  div.photoStrip {
+    box-sizing: border-box;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.0)), url(images/other/images.jpg);
+    padding: .5px;
+    div.photoText {
+      @include desktop {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+    }
+    h2 {
+      color: #fff;
+      font-weight: 100;
+      // background: red;
+      @include mobile {
+        font-size: 3rem;
+        height: $sectionImagesMobileHeadingHeight;
+        line-height: $sectionImagesMobileHeadingHeight;
+        padding-left: 5rem;
+        margin-top: $sectionImagesHeaderMobileTopMargin;
+      }
+      @include mobileSmall {
+        height: $sectionImagesMobileSmallHeadingHeight;
+        line-height: $sectionImagesMobileSmallHeadingHeight;
+        margin-top: $sectionImagesHeaderMobileSmallTopMargin;
+      }
+      @include desktop {
+        font-size: $sectionImagesDesktopHeadingHeight;
+        line-height: $sectionImagesDesktopHeadingHeight;
+        height: $sectionImagesDesktopHeadingHeight;
+        padding-left: 7rem;
+        margin-top: $sectionImagesHeaderDesktopTopMargin;
+      }
+    }
+  }
+  div#photosContent {
+    @include mobile {
+      padding: 2rem 0;
+    }
+    @include desktop {
+      // padding: 4rem 0;
+    }
+    div.container {
+      @include desktop {
+        width: 90%;
+      }
+      @include mobile {
+        width: 95%;
+      }
+    }
+    h3 {
+      font-size: 2.2rem;
+      margin: 2.5rem 0 1rem 1rem;
+      @include mobile {
+      }
+      @include desktop {
+      }
+    }
+    h3:first-of-type {
+      @include desktop {
+        margin-top: 1;
+      }
+    }
+    .imgSet {
+      // background: yellow;
+      figure {
+        float: left;
+        display: inline-block;
+        @include mobile {
+          width: 29%;
+          margin: 2%;
+        }
+        @include mobileSmall {
+          width: 44%;
+          margin: 3%;
+        }
+        @include desktop {
+          width: 29%;
+          margin: 2%;
+        }
+        @include desktopLarge {
+          width: 23%;
+          margin: 1%;
+        }
+      }
+      img {
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+        @include mobile {
+        }
+      }
+    }
+  }
+}
+
+
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  background: rgba(0, 0, 0, 0.9);
+  user-select: none;
+  .lightbox__number {
+    color: color(whiteText);
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+  .lightbox__btn {
+    font-weight: 100;
+    color: #f4f4f4;
+    user-select: none;
+  }
+  .lightbox__close {
+    // background: red;
+    
+    display: inline-block;
+    text-align: center;
+    height: 1em;
+    width: 1em;
+    line-height: 85%;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    
+    @include mobile {
+      font-size: 5rem;
+    }
+    @include desktop {
+      font-size: 5rem;
+    }
+  }
+  .lightbox__previous,
+  .lightbox__next {
+    // background-color: red;
+    display: inline-block;
+    // color: #f4f4f4;
+    width: 1em;
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    
+    @include mobile {
+      font-size: 4rem;
+      z-index: 5;
+      // background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 6px;
+    }
+    @include desktop {
+      font-size: 4rem;
+    }
+  }
+  .lightbox__previous {
+    left: -5px;
+    transform: translateY(-50%) rotate(90deg);
+    
+  }
+  .lightbox__next {
+    right: -5px;
+    transform: translateY(-50%) rotate(-90deg);
+  }
+  .lightbox__content {
+    position: absolute;
+    top: lightbox(contentMargins);
+    bottom: lightbox(contentMargins);
+    @include mobile {
+      right: 0;
+      left: 0;
+    }
+    @include desktop {
+      right: lightbox(contentMargins);
+      left: lightbox(contentMargins);
+    }
+    .lightbox__slide {
+      display: none;
+      position: absolute;
+      // background: blue;
+      width: 100%;
+      height: 100%;
+
+
+
+    }
+
+    .lightbox__image {
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+  }
+}
+
+
+
+// Contact section
+section#contact {
+  div.photoStrip {
+    background-image: url(images/other/contact.jpg);
+  }
+  ul#contactDetails {
+    @include mobile {
+      font-size: 1.8rem;
+    }
+    @include desktop {
+      font-size: 2.1rem;
+    }
+  }
+  ul#contactDetails > li + li {
+    margin-top: 1.6rem;
+  }
+  ul#contactAddress > li + li {
+    @include mobile {
+      margin-top: .3rem;
+    }
+    @include desktop {
+      margin-top: .5rem;
+    }
+  }
+  div#contactFacebook {
+    background-image: url(images/other/facebook.jpg);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    position: relative;
+    user-select: none;
+
+    @include mobile {
+      font-size: 2rem;
+      text-align: center;
+    }
+    @include desktop {
+      font-size: 2.3rem;
+      text-align: left;
+    }
+    div.content {
+      position: relative;
+      z-index: 2;
+      @include desktop {
+        padding: 10rem 0;
+      }
+    }
+    a {
+      border: 1px solid #fff;
+      border-radius: 3px;
+      margin-top: 3rem;
+      text-align: center;
+      user-select: none;
+      @include mobile {
+        display: block;
+        width: auto;
+        padding: 1rem 5rem;
+      }
+      @include desktop {
+        display: block;
+        width: 15rem;
+        padding: 1.5rem 6rem;
+      }
+    }
+  }
+  div#contactFacebook::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: 1;
+  }
+}
+
+
+

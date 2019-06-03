@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Interiery</title>
+</head>
+<body>
+
+
+  <header>
+    <div id="logoWrapper">
+      <img id="logoImage" src="images/other/logo.png" alt="logo">
+      <h1>Company</h1>
+      <p>Interiours</p>
+    </div>
+    <i id="menu-btn" class="material-icons">menu</i>
+  </header>
+
+
+  <nav class="mobileHidden">
+    <div class="navWrapper">
+      <ul>
+        <li id="home-btn"><span>ÚVOD</span></li>
+        <li id="about-btn"><span>O NÁS</span></li>
+        <li id="photos-btn"><span>FOTOGALERIE</span></li>
+        <li id="contact-btn"><span>KONTAKT</span></li>
+      </ul>
+    </div>
+    <i id="close-menu" class="material-icons">close</i>
+  </nav>
+
+
+  <main>
+
+
+    <section id="home" class="hidden">
+      <div id="homeImage">
+        <a href="#homeContent" class="expand">&#65088;</a>
+      </div>
+      <div id="homeContent" class="content">
+        <div class="container">
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis corporis iure modi natus! Tempora reprehenderit dolor laudantium error, voluptate accusamus facere, illo a delectus tempore et iste, obcaecati nobis laboriosam exercitationem debitis possimus ipsam. Ipsa!</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="about" class="hidden">
+      <div class="photoStrip"></div>
+      <div id="aboutContent" class="content">
+        <div class="container">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta hic ratione, vero perspiciatis vel obcaecati deleniti velit illo aut impedit aspernatur quibusdam. Hic, corrupti! Blanditiis labore ipsam, animi et asperiores consectetur voluptatum tempora id, vero minima laboriosam nihil, eaque aperiam rerum quibusdam. Rem obcaecati commodi quas placeat soluta dolores sunt, delectus fuga, quos necessitatibus odit vel illo natus, qui mollitia aliquid vitae deserunt dolor facere excepturi iste recusandae libero. Aut doloribus voluptates velit fugit quaerat, nam commodi consectetur ad mollitia et reprehenderit, possimus at, tempora doloremque dolor itaque ab atque aperiam laudantium. Atque praesentium eum consectetur deserunt at quo voluptatem ullam recusandae vero, adipisci officiis dignissimos velit exercitationem tempore aliquid!</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia aspernatur aliquam mollitia, fuga ipsam architecto officiis consequuntur velit quos provident quam doloribus eum facere quibusdam, expedita asperiores totam impedit voluptatem.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="photos" class="hidden">
+      <div class="photoStrip">
+        <div class="photoText">
+            <h2>REALIZACE</h2>
+        </div>
+      </div>
+      <div id="photosContent" class="content">
+        <div class="container">
+          <h3>Realizace 1</h3>
+        <!-- </div> -->
+          <div id="imgSet1" class="imgSet clearfix">
+            <figure>
+              <img src="images/set1/png/01.jpg" alt="realizace 1">
+            </figure>
+            <figure> 
+              <img src="images/set1/png/02.jpg" alt="realizace 1">
+            </figure>
+            <figure>
+              <img src="images/set1/png/03.jpg" alt="realizace 1">
+            </figure>
+            <figure>
+              <img src="images/set1/png/04.jpg" alt="realizace 1">
+            </figure>
+          </div>
+          <!-- <div class="container"> -->
+            <h3>Realizace 2</h3>
+          <!-- </div> -->
+          <div id="imgSet2" class="imgSet clearfix">
+            <figure>
+              <img src="images/set2/png/01.jpg" alt="realizace 2">
+            </figure>
+            <figure>
+              <img src="images/set2/png/02.jpg" alt="realizace 2">
+            </figure>
+            <figure>
+              <img src="images/set2/png/03.jpg" alt="realizace 2">
+            </figure>
+            <figure>
+              <img src="images/set2/png/04.jpg" alt="realizace 2">
+            </figure>
+            <figure>
+              <img src="images/set2/png/05.jpg" alt="realizace 2">
+            </figure>
+            <figure>
+              <img src="images/set2/png/06.jpg" alt="realizace 2">
+            </figure>
+            <figure>
+              <img src="images/set2/png/07.jpg" alt="realizace 2">
+            </figure>
+            <figure>
+              <img src="images/set2/png/08.jpg" alt="realizace 2">
+            </figure>               
+          </div>
+          <!-- <div class="container"> -->
+          <h3>Realizace 3</h3>
+        
+          <div id="imgSet3" class="imgSet clearfix">
+            <figure>
+              <img src="images/set3/png/01.jpg" alt="realizace 3">
+            </figure>
+            <figure>
+              <img src="images/set3/png/02.jpg" alt="realizace 3">
+            </figure> 
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="lightbox hidden">
+      <span class="lightbox__number">1 / 1</span>
+      <!-- Close button -->
+      <a class="lightbox__close lightbox__btn">&times;</a>
+      <!-- Next/previous buttons -->
+      <a class="lightbox__previous lightbox__btn">&#65088;</a>
+      <a class="lightbox__next lightbox__btn">&#65088;</a>
+      <!-- Pictures -->
+      <div class="lightbox__content">
+        <!-- <div class="lightbox__slide">
+          <img class="lightbox__image" src="images/set1/1080/03.jpg" alt="">
+        </div> -->
+      </div>
+    </section>
+
+    <section id="cache" style="display: none; height: 0; width: 0;">
+
+    </section>
+
+
+    <section id="contact" class="hidden">
+      <div class="photoStrip"></div>
+      <div id="contactContent">
+        <div class="container content">
+          <ul id="contactDetails">
+            <li>Jméno Příjmení</li>
+            <li>marketing, obchod</li>
+            <li>tel: +420 000 000 000</li>
+            <li><a href="mailto: abc@example.com">mail: jmeno.prijmeni@whatever.cz</a></li>
+            <li>
+              <ul id="contactAddress">
+                <li>Ulice čp</li>
+                <li>000 00 Město</li>
+                <li>IČO: 00 000 000</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div id="contactFacebook">
+          <div class="container content">
+            <h3>Neváhenjte nás kontaktovat i prostřednictvím facebooku</h3>
+            <a href="https://www.facebook.com" target="_blank">Klikněte zde</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+
+  <script src="app.js"></script>
+</body>
+</html>
